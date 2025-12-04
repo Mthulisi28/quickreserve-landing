@@ -29,11 +29,25 @@
         
         .logo-container {
             margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         
         .logo-container img {
-            max-width: 280px;
-            height: auto;
+            max-width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            background: white;
+            padding: 15px;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo-container img:hover {
+            transform: scale(1.05);
         }
         
         .hero h1 {
@@ -358,6 +372,11 @@
             .pricing-card.popular {
                 transform: scale(1);
             }
+            
+            .logo-container img {
+                max-width: 150px;
+                height: 150px;
+            }
         }
     </style>
 </head>
@@ -365,7 +384,7 @@
     <section class="hero">
         <div class="container">
             <div class="logo-container">
-                <img src="quickreserve-logo.png" alt="QuickReserve - Your Time, Secured" style="max-width: 280px; margin-bottom: 20px;">
+                <img src="quickreserve-logo.png" alt="QuickReserve - Your Time, Secured">
             </div>
             <h1>Stop Losing Money to No-Shows</h1>
             <p>WhatsApp booking system built for South African salons, trainers & studios</p>
@@ -622,6 +641,81 @@
                 <div class="form-group">
                     <label for="businessType">Business Type *</label>
                     <select id="businessType" name="businessType" required>
-                        <option value="">Select...</option>
-                        <option value="salon">Hair Salon</option>
-                        <option value="nails">Nail Salon</option>
+                        <option value="">Select your business type...</option>
+                        <optgroup label="Beauty & Personal Care">
+                            <option value="hair-salon">Hair Salon</option>
+                            <option value="nail-salon">Nail Salon</option>
+                            <option value="beauty-salon">Beauty Salon</option>
+                            <option value="barbershop">Barbershop</option>
+                            <option value="spa">Spa & Wellness Center</option>
+                            <option value="tattoo">Tattoo Studio</option>
+                        </optgroup>
+                        <optgroup label="Health & Wellness">
+                            <option value="massage">Massage Therapy</option>
+                            <option value="physiotherapy">Physiotherapy</option>
+                            <option value="chiropractor">Chiropractor</option>
+                            <option value="medical">Medical Practice</option>
+                            <option value="dentist">Dental Practice</option>
+                        </optgroup>
+                        <optgroup label="Fitness & Sports">
+                            <option value="personal-trainer">Personal Trainer</option>
+                            <option value="yoga">Yoga Studio</option>
+                            <option value="gym">Gym/Fitness Center</option>
+                            <option value="pilates">Pilates Studio</option>
+                        </optgroup>
+                        <optgroup label="Accommodation">
+                            <option value="lodge">Lodge</option>
+                            <option value="guesthouse">Guesthouse</option>
+                            <option value="bnb">Bed & Breakfast</option>
+                            <option value="hotel">Hotel</option>
+                        </optgroup>
+                        <optgroup label="Other Services">
+                            <option value="other">Other Service Business</option>
+                        </optgroup>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Tell us about your booking needs (Optional)</label>
+                    <textarea id="message" name="message" placeholder="e.g., Number of staff, current booking challenges, etc."></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Start Free Trial</button>
+            </form>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p style="margin-bottom: 10px;"><strong>QuickReserve</strong> - Smart Booking for Smart Businesses</p>
+            <p>📧 hello@quickreserve.co.za | 📱 WhatsApp: +27 68 108 4189</p>
+            <p style="margin-top: 20px; font-size: 0.9rem;">© 2024 QuickReserve. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                business: document.getElementById('business').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                businessType: document.getElementById('businessType').value,
+                message: document.getElementById('message').value,
+                timestamp: new Date().toISOString()
+            };
+            
+            // TODO: Connect to your backend/Firebase here
+            console.log('Form submitted:', formData);
+            
+            // Show success message
+            alert('🎉 Thank you! We\'ll contact you within 24 hours to set up your free trial.');
+            
+            // Reset form
+            this.reset();
+        });
+    </script>
+</body>
+</html>
