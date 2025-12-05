@@ -52,7 +52,7 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* --- PREVIEW BUBBLE (ONLY SHOW ONCE) --- */
+/* --- PREVIEW BUBBLE --- */
 .preview-bubble {
   position: fixed;
   bottom: 110px;
@@ -217,7 +217,7 @@
 <script>
 let chatOpen = false;
 
-// SOUND
+// SOUND CLICK
 const clickSound = new Audio("https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3");
 
 // Load chat history
@@ -271,7 +271,7 @@ document.getElementById("chatInput").addEventListener("keypress", e => {
 });
 
 // AI-style bot reply
-function botReply(userText) {
+function botReply() {
   const typing = document.getElementById("typingIndicator");
   typing.style.display = "flex";
 
@@ -285,7 +285,4 @@ function botReply(userText) {
 function openWhatsApp() {
   window.open("https://wa.me/27600745493?text=Hi%20QuickReserve!%20I%20need%20help.", "_blank");
 }
-
-// Convert R → R$
-document.body.innerHTML = document.body.innerHTML.replace(/R(\d+)/g, "R$ $1");
 </script>
