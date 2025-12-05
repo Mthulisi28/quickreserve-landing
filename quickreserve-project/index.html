@@ -24,9 +24,7 @@
   z-index: 9999;
   transition: transform .3s;
 }
-.chat-button:hover {
-  transform: scale(1.15);
-}
+.chat-button:hover { transform: scale(1.15); }
 
 /* Bounce animation */
 @keyframes bounce {
@@ -50,15 +48,11 @@
   animation: slideIn 1s forwards;
   z-index: 9998;
 }
-
 @keyframes slideIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* --- PREVIEW BUBBLE --- */
+/* --- PREVIEW BUBBLE (ONLY SHOW ONCE) --- */
 .preview-bubble {
   position: fixed;
   bottom: 110px;
@@ -84,18 +78,18 @@
   bottom: 110px;
   right: 20px;
   width: 320px;
-  height: 420px;
+  height: 450px;
   background: #ffffff;
   border-radius: 18px;
   box-shadow: 0 15px 35px rgba(0,0,0,0.25);
   display: none;
   flex-direction: column;
   overflow: hidden;
-  animation: popIn .3s ease;
+  animation: popIn .35s ease;
   z-index: 9999;
 }
 @keyframes popIn {
-  from { transform: scale(0.7); opacity: 0; }
+  from { transform: scale(0.6); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
 }
 
@@ -135,12 +129,27 @@
   margin-left: auto;
 }
 
-/* Typing indicator */
+/* AI typing dots */
 .typing {
-  font-size: 12px;
-  opacity: 0.7;
-  padding: 4px;
-  margin-bottom: 6px;
+  display: flex;
+  gap: 4px;
+  margin-bottom: 10px;
+  padding-left: 6px;
+}
+.typing div {
+  width: 7px;
+  height: 7px;
+  background: #bbb;
+  border-radius: 50%;
+  animation: blink 1.4s infinite both;
+}
+.typing div:nth-child(2) { animation-delay: .2s; }
+.typing div:nth-child(3) { animation-delay: .4s; }
+
+@keyframes blink {
+  0% { opacity: .2; }
+  20% { opacity: 1; }
+  100% { opacity: .2; }
 }
 
 /* Input area */
@@ -148,6 +157,7 @@
   padding: 10px;
   display: flex;
   background: #fff;
+  border-top: 1px solid #eee;
 }
 .chat-input-area input {
   flex: 1;
@@ -176,24 +186,25 @@
 }
 </style>
 
-<!-- Chat label -->
+<!-- LABEL -->
 <div class="chat-label">Chat with us</div>
 
 <!-- Preview Bubble -->
-<div class="preview-bubble">Hey! Need help with booking?</div>
+<div id="previewBubble" class="preview-bubble">Hey! Need help with booking?</div>
 
 <!-- Floating Button -->
-<div class="chat-button" onclick="toggleChat()">
-  💬
-</div>
+<div class="chat-button" onclick="toggleChat()">💬</div>
 
 <!-- Chat Window -->
 <div class="chat-window" id="chatWindow">
   <div class="chat-header">QuickReserve Support</div>
   
   <div class="chat-body" id="chatBody"></div>
-  
-  <div class="typing" id="typingIndicator" style="display:none;">Bot is typing...</div>
+
+  <!-- Typing indicator -->
+  <div id="typingIndicator" style="display:none;" class="typing">
+    <div></div><div></div><div></div>
+  </div>
 
   <div class="whatsapp-button" onclick="openWhatsApp()">Chat on WhatsApp</div>
 
@@ -212,9 +223,14 @@ const clickSound = new Audio("https://assets.mixkit.co/sfx/preview/mixkit-select
 // Load chat history
 let history = JSON.parse(localStorage.getItem("chatHistory") || "[]");
 if (history.length > 0) {
-  setTimeout(() => {
-    history.forEach(m => addMessage(m.text, m.type));
-  }, 500);
+  setTimeout(() => history.forEach(m => addMessage(m.text, m.type)), 600);
+}
+
+// Show preview bubble only once
+if (localStorage.getItem("previewShown")) {
+  document.getElementById("previewBubble").style.display = "none";
+} else {
+  localStorage.setItem("previewShown", "yes");
 }
 
 // Toggle chat window
@@ -249,10 +265,15 @@ function sendMessage() {
   input.value = "";
 }
 
-// Fake AI-like bot typing + response
+// ENTER to send
+document.getElementById("chatInput").addEventListener("keypress", e => {
+  if (e.key === "Enter") sendMessage();
+});
+
+// AI-style bot reply
 function botReply(userText) {
   const typing = document.getElementById("typingIndicator");
-  typing.style.display = "block";
+  typing.style.display = "flex";
 
   setTimeout(() => {
     typing.style.display = "none";
