@@ -17,6 +17,74 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
             color: #333;
+            overflow-x: hidden;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+        
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
         }
         
         /* Hero Section */
@@ -25,6 +93,26 @@
             color: white;
             padding: 80px 20px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1) 0%, transparent 50%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+        
+        .hero > .container {
+            position: relative;
+            z-index: 1;
         }
         
         .logo-container {
@@ -54,12 +142,14 @@
             font-size: 3rem;
             margin-bottom: 20px;
             font-weight: 800;
+            animation: fadeInUp 0.8s ease;
         }
         
         .hero p {
             font-size: 1.3rem;
             margin-bottom: 30px;
             opacity: 0.95;
+            animation: fadeInUp 1s ease;
         }
         
         .hero-features {
@@ -68,6 +158,7 @@
             gap: 30px;
             margin: 30px 0;
             flex-wrap: wrap;
+            animation: fadeInUp 1.2s ease;
         }
         
         .hero-feature {
@@ -75,6 +166,16 @@
             align-items: center;
             gap: 10px;
             font-size: 1.1rem;
+            background: rgba(255,255,255,0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .hero-feature:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-3px);
         }
         
         .cta-buttons {
@@ -105,6 +206,26 @@
         .btn-primary {
             background: #9DC444;
             color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .btn-primary:hover::before {
+            width: 300px;
+            height: 300px;
         }
         
         .btn-secondary {
@@ -145,16 +266,44 @@
         }
         
         .problem-card {
-            background: white;
+            background: linear-gradient(145deg, #fffef9 0%, #faf8f0 100%);
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid rgba(139, 74, 158, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .problem-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #e53e3e, #fc8181);
+        }
+        
+        .problem-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(229, 62, 62, 0.15);
+            background: linear-gradient(145deg, #fff9f0 0%, #fef5e7 100%);
         }
         
         .problem-icon {
             font-size: 3rem;
             margin-bottom: 15px;
+            display: inline-block;
+            transition: transform 0.3s ease;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1));
+        }
+        
+        .problem-card:hover .problem-icon {
+            transform: scale(1.2) rotate(5deg);
         }
         
         .problem-card h3 {
@@ -174,7 +323,18 @@
         .feature-card {
             padding: 30px;
             border-left: 4px solid #8B4A9E;
-            background: #f7fafc;
+            background: linear-gradient(145deg, #fefdfb 0%, #f9f7f3 100%);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .feature-card:hover {
+            background: linear-gradient(145deg, #ffffff 0%, #faf8f4 100%);
+            border-left-width: 8px;
+            transform: translateX(10px);
+            box-shadow: 0 10px 20px rgba(139, 74, 158, 0.15);
         }
         
         .feature-card h3 {
@@ -196,17 +356,30 @@
         }
         
         .pricing-card {
-            background: white;
+            background: linear-gradient(145deg, #fffef9 0%, #faf8f0 100%);
             border-radius: 12px;
             padding: 40px 30px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             text-align: center;
             position: relative;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(139, 74, 158, 0.1);
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(139, 74, 158, 0.2);
+            background: linear-gradient(145deg, #ffffff 0%, #faf8f4 100%);
         }
         
         .pricing-card.popular {
             border: 3px solid #8B4A9E;
             transform: scale(1.05);
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        .pricing-card.popular:hover {
+            transform: scale(1.08) translateY(-10px);
         }
         
         .popular-badge {
@@ -283,10 +456,21 @@
         }
         
         .testimonial-card {
-            background: white;
+            background: linear-gradient(145deg, #fffef9 0%, #faf8f0 100%);
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+            border: 1px solid rgba(139, 74, 158, 0.1);
+        }
+        
+        .testimonial-card:hover {
+            border-left-color: #8B4A9E;
+            border-left-width: 4px;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(139, 74, 158, 0.15);
+            background: linear-gradient(145deg, #ffffff 0%, #faf8f4 100%);
         }
         
         .testimonial-text {
@@ -305,10 +489,11 @@
         .contact-form {
             max-width: 600px;
             margin: 40px auto;
-            background: white;
+            background: linear-gradient(145deg, #fffef9 0%, #faf8f0 100%);
             padding: 40px;
             border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border: 1px solid rgba(139, 74, 158, 0.1);
         }
         
         .form-group {
@@ -378,6 +563,65 @@
                 height: 150px;
             }
         }
+        
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 20px rgba(0,0,0,0.3);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            animation: float 3s ease-in-out infinite;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 2px 2px 30px rgba(37, 211, 102, 0.5);
+        }
+        
+        /* Stats Counter */
+        .stats-section {
+            background: linear-gradient(135deg, #8B4A9E 0%, #6B3A7E 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .stat-card {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #9DC444;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
     </style>
 </head>
 <body>
@@ -387,7 +631,7 @@
                 <img src="quickreserve-logo.png" alt="QuickReserve - Your Time, Secured">
             </div>
             <h1>Stop Losing Money to No-Shows</h1>
-            <p>WhatsApp booking system built for South African salons, trainers & studios</p>
+            <p style="font-weight: 700; font-size: 1.4rem;">WhatsApp booking system built for South African salons, trainers & studios</p>
             
             <div class="hero-features">
                 <div class="hero-feature">✓ Cut no-shows by 60%</div>
@@ -397,7 +641,33 @@
             
             <div class="cta-buttons">
                 <a href="#contact" class="btn btn-primary">Start Free Trial</a>
-                <a href="https://wa.me/27681084189?text=Hi!%20I%20want%20to%20learn%20about%20QuickReserve" class="btn btn-secondary">WhatsApp Us</a>
+                <a href="https://wa.me/27733833254?text=Hi!%20I%20want%20to%20learn%20about%20QuickReserve" class="btn btn-secondary">WhatsApp Us</a>
+            </div>
+        </div>
+    </section>
+    
+    <section class="stats-section">
+        <div class="container">
+            <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Trusted by Growing Businesses</h2>
+            <p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 40px;">Join hundreds of service providers who've transformed their booking process</p>
+            
+            <div class="stats-grid">
+                <div class="stat-card animate-on-scroll">
+                    <span class="stat-number" data-target="500">0</span>
+                    <div class="stat-label">Active Businesses</div>
+                </div>
+                <div class="stat-card animate-on-scroll">
+                    <span class="stat-number" data-target="15000">0</span>
+                    <div class="stat-label">Monthly Bookings</div>
+                </div>
+                <div class="stat-card animate-on-scroll">
+                    <span class="stat-number" data-target="60">0</span>
+                    <div class="stat-label">% Fewer No-Shows</div>
+                </div>
+                <div class="stat-card animate-on-scroll">
+                    <span class="stat-number" data-target="98">0</span>
+                    <div class="stat-label">% Client Satisfaction</div>
+                </div>
             </div>
         </div>
     </section>
@@ -688,12 +958,81 @@
     <footer>
         <div class="container">
             <p style="margin-bottom: 10px;"><strong>QuickReserve</strong> - Smart Booking for Smart Businesses</p>
-            <p>📧 hello@quickreserve.co.za | 📱 WhatsApp: +27 68 108 4189</p>
+            <p>📧 support@quickreserve.co.za | 📱 WhatsApp: +27 73 383 3254</p>
             <p style="margin-top: 20px; font-size: 0.9rem;">© 2024 QuickReserve. All rights reserved.</p>
         </div>
     </footer>
     
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/27733833254?text=Hi!%20I%20want%20to%20learn%20about%20QuickReserve" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
+        <span style="font-size: 32px;">💬</span>
+    </a>
+    
     <script>
+        // Scroll Animation Observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all animate-on-scroll elements
+        document.addEventListener('DOMContentLoaded', () => {
+            const animatedElements = document.querySelectorAll('.animate-on-scroll');
+            animatedElements.forEach(el => observer.observe(el));
+            
+            // Add animate-on-scroll class to cards
+            document.querySelectorAll('.problem-card, .feature-card, .pricing-card, .testimonial-card').forEach(card => {
+                card.classList.add('animate-on-scroll');
+                observer.observe(card);
+            });
+        });
+        
+        // Animated Counter
+        function animateCounter(element) {
+            const target = parseInt(element.getAttribute('data-target'));
+            const duration = 2000;
+            const increment = target / (duration / 16);
+            let current = 0;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target.toLocaleString() + (element.parentElement.querySelector('.stat-label').textContent.includes('%') ? '%' : '+');
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current).toLocaleString();
+                }
+            }, 16);
+        }
+        
+        // Trigger counter animation when stats section is visible
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    document.querySelectorAll('.stat-number').forEach(num => {
+                        animateCounter(num);
+                    });
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const statsSection = document.querySelector('.stats-section');
+            if (statsSection) {
+                statsObserver.observe(statsSection);
+            }
+        });
+        
+        // Form Submission
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
