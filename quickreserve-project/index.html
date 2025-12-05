@@ -23,6 +23,7 @@
   animation: bounce 1.7s infinite;
   z-index: 9999;
   transition: transform .3s;
+  font-size: 28px;
 }
 .chat-button:hover { transform: scale(1.15); }
 
@@ -129,7 +130,7 @@
   margin-left: auto;
 }
 
-/* AI typing dots */
+/* Typing indicator */
 .typing {
   display: flex;
   gap: 4px;
@@ -145,7 +146,6 @@
 }
 .typing div:nth-child(2) { animation-delay: .2s; }
 .typing div:nth-child(3) { animation-delay: .4s; }
-
 @keyframes blink {
   0% { opacity: .2; }
   20% { opacity: 1; }
