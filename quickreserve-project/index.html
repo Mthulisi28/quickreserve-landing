@@ -1,214 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuickReserve - Stop Losing Money to No-Shows | Booking System</title>
-    <meta name="description" content="WhatsApp booking system for service providers worldwide. Cut no-shows by 60%. Save 2+ hours daily. R199/month (~$11). 14-day free trial.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QuickReserve - Global WhatsApp Booking</title>
+<meta name="description" content="Global-ready WhatsApp booking system. Cut no-shows by 60%. Save 2+ hours daily. R199/month (~$11). 14-day free trial.">
 
-    <style>
-        * { margin:0; padding:0; box-sizing:border-box; }
-        body { font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; line-height:1.6; color:#333; overflow-x:hidden; }
+<!-- Google Fonts: Royal / Attractive -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
-        /* Animations */
-        @keyframes fadeInUp { from {opacity:0; transform:translateY(30px);} to {opacity:1; transform:translateY(0);} }
-        @keyframes float {0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);} }
-        @keyframes pulse {0%,100%{transform:scale(1);}50%{transform:scale(1.05);} }
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Roboto',sans-serif;color:#333;line-height:1.6;overflow-x:hidden;}
+h1,h2,h3,h4,h5,h6{font-family:'Playfair Display',serif;}
+a{text-decoration:none;}
+img{max-width:100%;display:block;}
 
-        .animate-on-scroll { opacity:0; transform:translateY(30px); transition:opacity 0.6s ease, transform 0.6s ease; }
-        .animate-on-scroll.animated { opacity:1; transform:translateY(0); }
-        .float-animation { animation: float 3s ease-in-out infinite; }
+@keyframes fadeInUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+@keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.05);}}
 
-        /* Hero Section */
-        .hero { background: linear-gradient(135deg, #8B4A9E 0%, #6B3A7E 100%); color:white; padding:80px 20px; text-align:center; position:relative; overflow:hidden; }
-        .hero::before { content:''; position:absolute; top:0; left:0; right:0; bottom:0; background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1) 0%, transparent 50%); animation:pulse 4s ease-in-out infinite; }
-        .hero > .container { position:relative; z-index:1; }
+/* Hero */
+.hero{background:linear-gradient(135deg,#8B4A9E,#6B3A7E);color:white;padding:80px 20px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1) 0%, transparent 50%);animation:pulse 4s ease-in-out infinite;}
+.hero .container{position:relative; z-index:1;}
+.logo-container{margin-bottom:30px; display:flex; justify-content:center; align-items:center;}
+.logo-container img{max-width:180px;border-radius:50%;border:5px solid rgba(255,255,255,0.3);box-shadow:0 10px 30px rgba(0,0,0,0.3);background:white;padding:15px;transition:transform 0.3s;}
+.logo-container img:hover{transform:scale(1.05);}
+.hero h1{font-size:3rem;margin-bottom:20px;font-weight:900;animation:fadeInUp 0.8s;}
+.hero p{font-size:1.3rem;margin-bottom:30px;opacity:0.95;animation:fadeInUp 1s;}
+.hero-features{display:flex;justify-content:center;gap:40px;margin:30px 0;flex-wrap:wrap;animation:fadeInUp 1.2s;}
+.hero-feature{display:flex;flex-direction:column;align-items:center;font-weight:600;}
+.hero-feature span:first-child{font-size:2rem;font-weight:800;color:#FFD166;}
+.hero-feature span:last-child{font-size:1.2rem;margin-top:5px;color:white;text-align:center;}
+.cta-buttons{display:flex;gap:20px;justify-content:center;margin-top:40px;flex-wrap:wrap;}
+.btn{padding:18px 40px;font-size:1.1rem;border:none;border-radius:8px;cursor:pointer;font-weight:600;display:inline-block;transition:transform 0.2s, box-shadow 0.2s;}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(0,0,0,0.2);}
+.btn-primary{background:#9DC444;color:white;position:relative;overflow:hidden;}
+.btn-primary::before{content:'';position:absolute;top:50%;left:50%;width:0;height:0;border-radius:50%;background:rgba(255,255,255,0.2);transform:translate(-50%,-50%);transition:width 0.6s,height 0.6s;}
+.btn-primary:hover::before{width:300px;height:300px;}
+.btn-secondary{background:transparent;color:white;border:2px solid white;}
 
-        .logo-container { margin-bottom:30px; display:flex; justify-content:center; align-items:center; }
-        .logo-container img { max-width:200px; height:200px; object-fit:cover; border-radius:50%; border:5px solid rgba(255,255,255,0.3); box-shadow:0 10px 30px rgba(0,0,0,0.3); background:white; padding:15px; transition:transform 0.3s ease; }
-        .logo-container img:hover { transform:scale(1.05); }
+/* Sections */
+section{padding:80px 20px;}
+.section-title{text-align:center;font-size:2.5rem;margin-bottom:50px;color:#2d3748;}
 
-        .hero h1 { font-size:3rem; margin-bottom:20px; font-weight:800; animation:fadeInUp 0.8s ease; }
-        .hero p { font-size:1.3rem; margin-bottom:30px; opacity:0.95; animation:fadeInUp 1s ease; }
+/* Problem Section */
+.problem{background:#f7fafc;}
+.problem-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;margin-top:40px;}
+.problem-card{background:linear-gradient(145deg,#fffef9,#faf8f0);padding:30px;border-radius:12px;box-shadow:0 4px 6px rgba(0,0,0,0.1);text-align:center;transition:all 0.3s;cursor:pointer;border:1px solid rgba(139,74,158,0.1);position:relative;overflow:hidden;}
+.problem-card:hover{transform:translateY(-10px);box-shadow:0 15px 30px rgba(139,74,158,0.15);background:linear-gradient(145deg,#fff9f0,#fef5e7);}
+.problem-icon{font-size:3rem;margin-bottom:15px;display:inline-block;transition:transform 0.3s;}
+.problem-card:hover .problem-icon{transform:scale(1.2) rotate(5deg);}
+.problem-card h3{font-size:1.3rem;margin-bottom:15px;color:#e53e3e;}
 
-        /* Hero Features - new pro style */
-        .hero-features { display:flex; justify-content:center; gap:40px; margin:30px 0; flex-wrap:wrap; animation:fadeInUp 1.2s ease; }
-        .hero-feature { display:flex; flex-direction:column; align-items:center; font-weight:600; }
-        .hero-feature span:first-child { font-size:2rem; font-weight:800; color:#FFD166; }
-        .hero-feature span:last-child { font-size:1.2rem; margin-top:5px; color:white; text-align:center; }
+/* Stats Section - GOLDEN ROYAL */
+.stats-section{background:#FFD700;color:#2d2d2d;text-align:center;padding:100px 20px;font-family:'Playfair Display',serif;}
+.stats-section h2{font-size:2.8rem;margin-bottom:10px;color:#4B2E83;}
+.stats-section p{font-size:1.3rem;opacity:0.85;margin-bottom:50px;}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px;justify-items:center;align-items:center;}
+.stat-card{background:rgba(255,255,255,0.15);backdrop-filter:blur(5px);padding:30px 20px;border-radius:15px;box-shadow:0 8px 20px rgba(0,0,0,0.2);transition:transform 0.3s;}
+.stat-card:hover{transform:scale(1.05);}
+.stat-number{font-size:3rem;font-weight:900;color:#4B2E83;display:block;margin-bottom:10px;}
+.stat-label{font-size:1.2rem;font-weight:600;opacity:0.9;}
 
-        .cta-buttons { display:flex; gap:20px; justify-content:center; margin-top:40px; flex-wrap:wrap; }
-        .btn { padding:18px 40px; font-size:1.1rem; border:none; border-radius:8px; cursor:pointer; font-weight:600; text-decoration:none; display:inline-block; transition:transform 0.2s, box-shadow 0.2s; }
-        .btn:hover { transform:translateY(-2px); box-shadow:0 10px 25px rgba(0,0,0,0.2); }
-        .btn-primary { background:#9DC444; color:white; position:relative; overflow:hidden; }
-        .btn-primary::before { content:''; position:absolute; top:50%; left:50%; width:0; height:0; border-radius:50%; background:rgba(255,255,255,0.2); transform:translate(-50%, -50%); transition:width 0.6s, height 0.6s; }
-        .btn-primary:hover::before { width:300px; height:300px; }
-        .btn-secondary { background:transparent; color:white; border:2px solid white; }
+/* Features Section */
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;margin-top:40px;}
+.feature-card{padding:30px;border-left:4px solid #8B4A9E;background:linear-gradient(145deg,#fefdfb,#f9f7f3);transition:all 0.3s;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.05);}
+.feature-card:hover{background:linear-gradient(145deg,#ffffff,#faf8f4);border-left-width:8px;transform:translateX(10px);box-shadow:0 10px 20px rgba(139,74,158,0.15);}
+.feature-card h3{font-size:1.4rem;margin-bottom:15px;color:#2d3748;}
 
-        /* Container */
-        .container { max-width:1200px; margin:0 auto; padding:0 20px; }
+/* Pricing Section */
+.pricing{background:#f7fafc;}
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;margin-top:40px;}
+.pricing-card{background:linear-gradient(145deg,#fffef9,#faf8f0);border-radius:12px;padding:40px 30px;box-shadow:0 4px 6px rgba(0,0,0,0.1);text-align:center;position:relative;transition:all 0.3s;border:1px solid rgba(139,74,158,0.1);}
+.pricing-card:hover{transform:translateY(-10px);box-shadow:0 20px 40px rgba(139,74,158,0.2);background:linear-gradient(145deg,#ffffff,#faf8f4);}
+.pricing-card.popular{border:3px solid #8B4A9E;transform:scale(1.05);animation:pulse 2s ease-in-out infinite;}
+.popular-badge{position:absolute;top:-15px;left:50%;transform:translateX(-50%);background:#9DC444;color:white;padding:5px 20px;border-radius:20px;font-size:0.9rem;font-weight:600;}
 
-        /* Sections */
-        section { padding:80px 20px; }
-        .section-title { text-align:center; font-size:2.5rem; margin-bottom:50px; color:#2d3748; }
+/* Testimonials */
+.testimonials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:30px;margin-top:40px;}
+.testimonial-card{background:linear-gradient(145deg,#fffef9,#faf8f0);padding:30px;border-radius:12px;box-shadow:0 4px 6px rgba(0,0,0,0.1);transition:all 0.3s;border-left:4px solid transparent;border:1px solid rgba(139,74,158,0.1);}
+.testimonial-card:hover{border-left-color:#8B4A9E;border-left-width:4px;transform:translateY(-5px);box-shadow:0 15px 30px rgba(139,74,158,0.15);background:linear-gradient(145deg,#ffffff,#faf8f4);}
+.testimonial-text{font-style:italic;margin-bottom:20px;font-size:1.1rem;color:#4a5568;}
+.testimonial-author{font-weight:600;color:#2d3748;}
 
-        /* Problem Section */
-        .problem { background:#f7fafc; }
-        .problem-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:30px; margin-top:40px; }
-        .problem-card { background:linear-gradient(145deg,#fffef9 0%,#faf8f0 100%); padding:30px; border-radius:12px; box-shadow:0 4px 6px rgba(0,0,0,0.1); text-align:center; transition:all 0.3s ease; cursor:pointer; border:1px solid rgba(139,74,158,0.1); position:relative; overflow:hidden; }
-        .problem-card::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg,#e53e3e,#fc8181); }
-        .problem-card:hover { transform:translateY(-10px); box-shadow:0 15px 30px rgba(229,62,62,0.15); background:linear-gradient(145deg,#fff9f0 0%,#fef5e7 100%); }
-        .problem-icon { font-size:3rem; margin-bottom:15px; display:inline-block; transition:transform 0.3s ease; filter:drop-shadow(2px 2px 4px rgba(0,0,0,0.1)); }
-        .problem-card:hover .problem-icon { transform:scale(1.2) rotate(5deg); }
-        .problem-card h3 { font-size:1.3rem; margin-bottom:15px; color:#e53e3e; }
+/* WhatsApp Button */
+.whatsapp-float{position:fixed;width:60px;height:60px;bottom:40px;right:40px;background-color:#25d366;color:#FFF;border-radius:50px;text-align:center;font-size:30px;box-shadow:2px 2px 20px rgba(0,0,0,0.3);z-index:100;display:flex;align-items:center;justify-content:center;text-decoration:none;animation:float 3s ease-in-out infinite;transition:all 0.3s;}
+.whatsapp-float:hover{transform:scale(1.1);box-shadow:2px 2px 30px rgba(37,211,102,0.5);}
 
-        /* Features Section */
-        .features-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:40px; margin-top:40px; }
-        .feature-card { padding:30px; border-left:4px solid #8B4A9E; background:linear-gradient(145deg,#fefdfb 0%,#f9f7f3 100%); transition:all 0.3s ease; cursor:pointer; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.05); }
-        .feature-card:hover { background:linear-gradient(145deg,#ffffff 0%,#faf8f4 100%); border-left-width:8px; transform:translateX(10px); box-shadow:0 10px 20px rgba(139,74,158,0.15); }
-        .feature-card h3 { font-size:1.4rem; margin-bottom:15px; color:#2d3748; }
+/* Contact Form */
+.contact-form{max-width:600px;margin:40px auto;background:linear-gradient(145deg,#fffef9,#faf8f0);padding:40px;border-radius:12px;box-shadow:0 4px 6px rgba(0,0,0,0.1);border:1px solid rgba(139,74,158,0.1);}
+.form-group{margin-bottom:20px;}
+.form-group label{display:block;margin-bottom:8px;font-weight:600;color:#2d3748;}
+.form-group input, .form-group select, .form-group textarea{width:100%;padding:12px;border:1px solid #cbd5e0;border-radius:6px;font-size:1rem;}
+.form-group textarea{resize:vertical;min-height:120px;}
 
-        /* Pricing Section */
-        .pricing { background:#f7fafc; }
-        .pricing-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:30px; margin-top:40px; }
-        .pricing-card { background:linear-gradient(145deg,#fffef9 0%,#faf8f0 100%); border-radius:12px; padding:40px 30px; box-shadow:0 4px 6px rgba(0,0,0,0.1); text-align:center; position:relative; transition:all 0.3s ease; border:1px solid rgba(139,74,158,0.1); }
-        .pricing-card:hover { transform:translateY(-10px); box-shadow:0 20px 40px rgba(139,74,158,0.2); background:linear-gradient(145deg,#ffffff 0%,#faf8f4 100%); }
-        .pricing-card.popular { border:3px solid #8B4A9E; transform:scale(1.05); animation:pulse 2s ease-in-out infinite; }
-        .popular-badge { position:absolute; top:-15px; left:50%; transform:translateX(-50%); background:#9DC444; color:white; padding:5px 20px; border-radius:20px; font-size:0.9rem; font-weight:600; }
-
-        /* Testimonials */
-        .testimonials-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(350px,1fr)); gap:30px; margin-top:40px; }
-        .testimonial-card { background:linear-gradient(145deg,#fffef9 0%,#faf8f0 100%); padding:30px; border-radius:12px; box-shadow:0 4px 6px rgba(0,0,0,0.1); transition:all 0.3s ease; border-left:4px solid transparent; border:1px solid rgba(139,74,158,0.1); }
-        .testimonial-card:hover { border-left-color:#8B4A9E; border-left-width:4px; transform:translateY(-5px); box-shadow:0 15px 30px rgba(139,74,158,0.15); background:linear-gradient(145deg,#ffffff 0%,#faf8f4 100%); }
-        .testimonial-text { font-style:italic; margin-bottom:20px; font-size:1.1rem; color:#4a5568; }
-        .testimonial-author { font-weight:600; color:#2d3748; }
-
-        /* Floating WhatsApp Button */
-        .whatsapp-float { position:fixed; width:60px; height:60px; bottom:40px; right:40px; background-color:#25d366; color:#FFF; border-radius:50px; text-align:center; font-size:30px; box-shadow:2px 2px 20px rgba(0,0,0,0.3); z-index:100; display:flex; align-items:center; justify-content:center; text-decoration:none; animation:float 3s ease-in-out infinite; transition:all 0.3s ease; }
-        .whatsapp-float:hover { transform:scale(1.1); box-shadow:2px 2px 30px rgba(37,211,102,0.5); }
-
-        /* Contact Form */
-        .contact-form { max-width:600px; margin:40px auto; background:linear-gradient(145deg,#fffef9 0%,#faf8f0 100%); padding:40px; border-radius:12px; box-shadow:0 4px 6px rgba(0,0,0,0.1); border:1px solid rgba(139,74,158,0.1); }
-        .form-group { margin-bottom:20px; }
-        .form-group label { display:block; margin-bottom:8px; font-weight:600; color:#2d3748; }
-        .form-group input, .form-group select, .form-group textarea { width:100%; padding:12px; border:1px solid #cbd5e0; border-radius:6px; font-size:1rem; }
-        .form-group textarea { resize:vertical; min-height:120px; }
-
-        /* Footer */
-        footer { background:#2d3748; color:white; padding:40px 20px; text-align:center; }
-        footer a { color:#90cdf4; text-decoration:none; }
-
-        /* Mobile */
-        @media(max-width:768px){.hero h1{font-size:2rem;}.hero p{font-size:1.1rem;}.hero-features{flex-direction:column; gap:15px;}.section-title{font-size:2rem;}.pricing-card.popular{transform:scale(1);}.logo-container img{max-width:150px;height:150px;}}
-    </style>
+/* Footer */
+footer{background:#2d3748;color:white;padding:40px 20px;text-align:center;}
+footer a{color:#90cdf4;text-decoration:none;}
+</style>
 </head>
 <body>
-    <section class="hero">
-        <div class="container">
-            <div class="logo-container">
-                <img src="quickreserve-logo.png" alt="QuickReserve - Your Time, Secured">
-            </div>
-            <h1>Stop Losing Money to No-Shows</h1>
-            <p style="font-weight:700; font-size:1.4rem;">Global-ready WhatsApp booking system – works anywhere, any time zone.</p>
-            
-            <div class="hero-features">
-                <div class="hero-feature">
-                    <span style="color:#FFD166;">60%</span>
-                    <span>Fewer No-Shows</span>
-                </div>
-                <div class="hero-feature">
-                    <span style="color:#06D6A0;">2+</span>
-                    <span>Hours Saved Daily</span>
-                </div>
-                <div class="hero-feature">
-                    <span style="color:#FF6B6B;">R199</span>
-                    <span>/month (~$11)</span>
-                </div>
-            </div>
 
-            <div class="cta-buttons">
-                <a href="#contact" class="btn btn-primary">Start Free Trial</a>
-                <a href="https://wa.me/27733833254" class="btn btn-secondary" target="_blank">
-                    <span style="font-size:1.2rem;">💬 Chat on WhatsApp</span>
-                </a>
-            </div>
-        </div>
-    </section>
+<!-- Hero -->
+<section class="hero">
+<div class="container">
+    <div class="logo-container"><img src="quickreserve-logo.png" alt="QuickReserve Logo"></div>
+    <h1>Stop Losing Money to No-Shows</h1>
+    <p>Global-ready WhatsApp booking system – works anywhere, any time zone.</p>
 
-    <section class="stats-section">
-        <div class="container">
-            <h2 style="font-size:2.5rem; margin-bottom:20px;">Trusted by Growing Businesses</h2>
-            <p style="font-size:1.2rem; opacity:0.9; margin-bottom:40px;">Join hundreds of service providers who've transformed their booking process</p>
-            
-            <div class="stats-grid">
-                <div class="stat-card animate-on-scroll">
-                    <span class="stat-number" data-target="500">0</span>
-                    <div class="stat-label">Active Businesses</div>
-                </div>
-                <div class="stat-card animate-on-scroll">
-                    <span class="stat-number" data-target="15000">0</span>
-                    <div class="stat-label">Monthly Bookings</div>
-                </div>
-                <div class="stat-card animate-on-scroll">
-                    <span class="stat-number" data-target="60">0</span>
-                    <div class="stat-label">% Fewer No-Shows</div>
-                </div>
-                <div class="stat-card animate-on-scroll">
-                    <span class="stat-number" data-target="98">0</span>
-                    <div class="stat-label">% Client Satisfaction</div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div class="hero-features">
+        <div class="hero-feature"><span style="color:#FFD166;">60%</span><span>Fewer No-Shows</span></div>
+        <div class="hero-feature"><span style="color:#06D6A0;">2+</span><span>Hours Saved Daily</span></div>
+        <div class="hero-feature"><span style="color:#FF6B6B;">R199</span><span>/month (~$11)</span></div>
+    </div>
 
-    <section class="problem">
-        <div class="container">
-            <h2 class="section-title">Sound Familiar?</h2>
+    <div class="cta-buttons">
+        <a href="#contact" class="btn btn-primary">Start Free Trial</a>
+        <a href="https://wa.me/27733833254" class="btn btn-secondary" target="_blank"><span style="font-size:1.2rem;">💬 Chat on WhatsApp</span></a>
+    </div>
+</div>
+</section>
 
-            <div class="problem-grid">
-                <div class="problem-card">
-                    <div class="problem-icon">😤</div>
-                    <h3>Losing R4,000/Month to No-Shows</h3>
-                    <p>Clients book, you hold the slot, they don't show up. Money gone.</p>
-                </div>
-                
-                <div class="problem-card">
-                    <div class="problem-icon">⏰</div>
-                    <h3>Wasting 10-15 Hours Weekly</h3>
-                    <p>WhatsApp messages, phone calls, updating calendars... You're doing admin, not what you love.</p>
-                </div>
-                
-                <div class="problem-card">
-                    <div class="problem-icon">😰</div>
-                    <h3>Double-Bookings & Chaos</h3>
-                    <p>Messy WhatsApp chats. Forgotten appointments. Angry clients. Stressful days.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Additional sections (features, pricing, testimonials, contact form, footer) remain the same as previous full script, adjusted with global-ready text where necessary -->
+<!-- Problems -->
+<section class="problem">
+<div class="container">
+<h2 class="section-title">Sound Familiar?</h2>
+<div class="problem-grid">
+    <div class="problem-card"><div class="problem-icon">😤</div><h3>Losing R4,000/Month to No-Shows</h3><p>Clients book, you hold the slot, they don't show up. Money gone.</p></div>
+    <div class="problem-card"><div class="problem-icon">⏰</div><h3>Wasting 10-15 Hours Weekly</h3><p>WhatsApp messages, phone calls, updating calendars... You're doing admin, not what you love.</p></div>
+    <div class="problem-card"><div class="problem-icon">😰</div><h3>Double-Bookings & Chaos</h3><p>Messy WhatsApp chats. Forgotten appointments. Angry clients. Stressful days.</p></div>
+</div>
+</div>
+</section>
 
-    <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/27733833254" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
-        <span style="font-size:32px;">💬</span>
-    </a>
+<!-- Stats -->
+<section class="stats-section">
+<div class="container">
+<h2>Trusted by Growing Businesses</h2>
+<p>Join hundreds of service providers who've transformed their booking process</p>
+<div class="stats-grid">
+    <div class="stat-card"><span class="stat-number" data-target="500">0</span><div class="stat-label">Active Businesses</div></div>
+    <div class="stat-card"><span class="stat-number" data-target="15000">0</span><div class="stat-label">Monthly Bookings</div></div>
+    <div class="stat-card"><span class="stat-number" data-target="60">0</span><div class="stat-label">% Fewer No-Shows</div></div>
+    <div class="stat-card"><span class="stat-number" data-target="98">0</span><div class="stat-label">% Client Satisfaction</div></div>
+</div>
+</div>
+</section>
 
-    <script>
-        // Scroll Animation Observer
-        const observerOptions = { threshold: 0.1, rootMargin:'0px 0px -100px 0px' };
-        const observer = new IntersectionObserver((entries)=>{ entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.classList.add('animated'); } }); }, observerOptions);
-        document.addEventListener('DOMContentLoaded', ()=>{
-            const animatedElements=document.querySelectorAll('.animate-on-scroll');
-            animatedElements.forEach(el=>observer.observe(el));
-            document.querySelectorAll('.problem-card, .feature-card, .pricing-card, .testimonial-card').forEach(card=>{
-                card.classList.add('animate-on-scroll'); observer.observe(card);
-            });
-        });
+<!-- Features -->
+<section>
+<div class="container">
+<h2 class="section-title">Features</h2>
+<div class="features-grid">
+    <div class="feature-card"><h3>Seamless WhatsApp Booking</h3><p>Clients book via WhatsApp in seconds. Everything syncs automatically.</p></div>
+    <div class="feature-card"><h3>Automated Reminders</h3><p>Reduce no-shows with automatic reminders and confirmations.</p></div>
+    <div class="feature-card"><h3>Global Time Zones</h3><p>Works anywhere, managing clients across countries effortlessly.</p></div>
+</div>
+</div>
+</section>
 
-        // Animated Counter
-        function animateCounter(element){ const target=parseInt(element.getAttribute('data-target')); const duration=2000; const increment=target/(duration/50); let current=0; const counterInterval=setInterval(()=>{ current+=increment; if(current>=target){ element.innerText=target; clearInterval(counterInterval); } else{ element.innerText=Math.floor(current); } },50);}
-        document.addEventListener('DOMContentLoaded',()=>{ document.querySelectorAll('.stat-number').forEach(el=>animateCounter(el)); });
-    </script>
+<!-- Pricing -->
+<section class="pricing">
+<div class="container">
+<h2 class="section-title">Pricing</h2>
+<div class="pricing-grid">
+<div class="pricing-card popular"><div class="popular-badge">Most Popular</div>
+<h3>Pro Plan</h3>
+<p style="font-size:2rem;font-weight:700;">R199/month (~$11)</p>
+<p>Includes unlimited bookings, reminders, global time zones support, WhatsApp integration.</p>
+<a href="#contact" class="btn btn-primary">Start Free Trial</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Testimonials -->
+<section>
+<div class="container">
+<h2 class="section-title">What Our Trainers Say</h2>
+<div class="testimonials-grid">
+<div class="testimonial-card">
+<p class="testimonial-text">"Managing PT sessions used to be chaotic. QuickReserve simplified everything. My trainers and clients both love how easy it is to book and confirm sessions."</p>
+<p class="testimonial-author">Advocate M., Moove Gym Fourways – Trainer</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Contact Form -->
+<section id="contact">
+<div class="container">
+<h2 class="section-title">Start Your Free Trial</h2>
+<form class="contact-form">
+<div class="form-group"><label>Name</label><input type="text" placeholder="Your Name"></div>
+<div class="form-group"><label>Email</label><input type="email" placeholder="you@example.com"></div>
+<div class="form-group"><label>Business</label><input type="text" placeholder="Gym, Studio, Spa..."></div>
+<div class="form-group"><label>Message</label><textarea placeholder="Any questions?"></textarea></div>
+<button type="submit" class="btn btn-primary">Get Started</button>
+</form>
+</div>
+</section>
+
+<!-- Footer -->
+<footer>
+<p>&copy; 2025 QuickReserve. All rights reserved. <a href="https://wa.me/27733833254" target="_blank">💬 Chat on WhatsApp</a></p>
+</footer>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/27733833254" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">💬</a>
+
+<script>
+// Animate Stats Counters
+function animateCounter(element){const target=parseInt(element.getAttribute('data-target'));let current=0;const increment=target/50;const interval=setInterval(()=>{current+=increment;if(current>=target){element.innerText=target;clearInterval(interval);}else{element.innerText=Math.floor(current);}},50);}
+document.addEventListener('DOMContentLoaded',()=>{document.querySelectorAll('.stat-number').forEach(el=>animateCounter(el));});
+</script>
+
 </body>
 </html>
