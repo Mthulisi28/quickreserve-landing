@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You! - QuickReserve</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #8B4A9E 0%, #6B3A7E 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .success-container {
+            background: linear-gradient(145deg, #fffef9 0%, #faf8f0 100%);
+            max-width: 600px;
+            padding: 60px 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: slideUp 0.6s ease;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .success-icon {
+            font-size: 80px;
+            margin-bottom: 30px;
+            animation: bounce 1s ease;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            color: #8B4A9E;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            font-size: 1.2rem;
+            color: #4a5568;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+        
+        .highlight {
+            background: linear-gradient(135deg, #8B4A9E 0%, #6B3A7E 100%);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 18px 40px;
+            background: #9DC444;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(157, 196, 68, 0.4);
+        }
+        
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 18px 40px;
+            background: #25d366;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            margin: 10px;
+        }
+        
+        .whatsapp-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+        }
+        
+        .next-steps {
+            background: rgba(139, 74, 158, 0.05);
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 40px;
+            text-align: left;
+        }
+        
+        .next-steps h2 {
+            color: #8B4A9E;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .next-steps ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .next-steps li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(139, 74, 158, 0.1);
+            display: flex;
+            align-items: start;
+            gap: 15px;
+        }
+        
+        .next-steps li:last-child {
+            border-bottom: none;
+        }
+        
+        .step-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .success-container {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="success-container">
+        <div class="success-icon">🎉</div>
+        <h1>Thank You!</h1>
+        <p>
+            We've received your request and we're excited to help you transform your booking process!
+        </p>
+        <p>
+            Our team will contact you within <span class="highlight">24 hours</span> to set up your personalized demo and answer any questions.
+        </p>
+        
+        <div style="margin: 30px 0;">
+            <a href="https://wa.me/27733833254?text=Hi!%20I%20just%20signed%20up%20for%20QuickReserve" class="whatsapp-btn">
+                <span style="font-size: 24px;">💬</span>
+                Chat with us on WhatsApp
+            </a>
+        </div>
+        
+        <div class="next-steps">
+            <h2>What Happens Next?</h2>
+            <ul>
+                <li>
+                    <span class="step-icon">📧</span>
+                    <div>
+                        <strong>Check your email</strong><br>
+                        We've sent you a confirmation with more details
+                    </div>
+                </li>
+                <li>
+                    <span class="step-icon">📞</span>
+                    <div>
+                        <strong>We'll reach out</strong><br>
+                        Our team will call or WhatsApp you within 24 hours
+                    </div>
+                </li>
+                <li>
+                    <span class="step-icon">🎯</span>
+                    <div>
+                        <strong>Personalized demo</strong><br>
+                        We'll show you exactly how QuickReserve works for your business
+                    </div>
+                </li>
+                <li>
+                    <span class="step-icon">🚀</span>
+                    <div>
+                        <strong>Start your free trial</strong><br>
+                        14 days to test everything, no credit card required
+                    </div>
+                </li>
+            </ul>
+        </div>
+        
+        <a href="/" class="btn">Return to Homepage</a>
+        
+        <p style="margin-top: 30px; font-size: 0.95rem; color: #718096;">
+            Questions? Email us at <a href="mailto:support@quickreserve.co.za" style="color: #8B4A9E; text-decoration: none; font-weight: 600;">support@quickreserve.co.za</a>
+        </p>
+    </div>
+</body>
+</html>
