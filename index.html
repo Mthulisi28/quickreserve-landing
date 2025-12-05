@@ -3,84 +3,970 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuickReserve - Stop Losing Money to No-Shows</title>
-    <meta name="description" content="WhatsApp booking system for South African businesses. Cut no-shows by 60%. Save 10+ hours/week. From R199/month.">
+    <title>QuickReserve - Stop Losing Money to No-Shows | SA Booking System</title>
+    <meta name="description" content="WhatsApp booking system for South African salons, trainers & studios. Cut no-shows by 60%. Save 2+ hours daily. R199/month. 14-day free trial.">
+   
     <style>
-        *{margin:0;padding:0;box-sizing:border-box}
-        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;color:#333;background:#f8fafc;overflow-x:hidden}
-        @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-        @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
-        @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
-        .animate{opacity:0;transform:translateY(30px);transition:all .8s}
-        .animate.show{opacity:1;transform:translateY(0)}
-        .hero{background:linear-gradient(135deg,#8B4A9E,#6B3A7E);color:white;padding:90px 20px 100px;text-align:center;position:relative;overflow:hidden}
-        .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 50%,rgba(255,255,255,.12),transparent 50%),radial-gradient(circle at 80% 80%,rgba(255,255,255,.1),transparent 50%);animation:pulse 8s infinite}
-        .container{max-width:1200px;margin:auto;padding:0 20px;position:relative;z-index:1}
-        .logo-container img{max-width:180px;height:180px;object-fit:contain;border-radius:50%;border:6px solid rgba(255,255,255,.3);background:white;padding:15px;box-shadow:0 10px 30px rgba(0,0,0,.4);margin-bottom:30px}
-        .hero h1{font-size:3.2rem;font-weight:800;margin-bottom:20px;animation:fadeInUp .8s}
-        .hero p{font-size:1.4rem;margin-bottom:30px;animation:fadeInUp 1s}
-        .hero-features{display:flex;justify-content:center;gap:25px;flex-wrap:wrap;margin:40px 0}
-        .hero-feature{background:rgba(255,255,255,.15);backdrop-filter:blur(10px);padding:14px 28px;border-radius:50px;font-weight:600;border:2px solid rgba(157,196,68,.3);transition:all .3s}
-        .hero-feature:hover{background:#9DC444;border-color:#9DC444;transform:translateY(-5px);box-shadow:0 10px 20px rgba(157,196,68,.3)}
-        .btn{padding:18px 40px;font-size:1.1rem;border:none;border-radius:8px;font-weight:600;text-decoration:none;display:inline-block;transition:all .3s}
-        .btn-primary{background:#9DC444;color:white}
-        .btn-primary:hover{transform:translateY(-3px);box-shadow:0 15px 30px rgba(157,196,68,.4)}
-        .btn-secondary{background:transparent;color:white;border:2px solid white}
-        section{padding:80px 20px}
-        .section-title{text-align:center;font-size:2.5rem;margin-bottom:50px;color:#2d3748}
-        .stats-section{background:linear-gradient(135deg,#8B4A9E,#6B3A7E);color:white;text-align:center}
-        .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px;margin-top:40px}
-        .stat-number{font-size:3rem;font-weight:800;color:#9DC444;display:block;margin-bottom:10px}
-        .problem{background:#f7fafc}
-        .problem-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;margin-top:40px}
-        .problem-card{background:white;padding:30px;border-radius:12px;box-shadow:0 4px 6px rgba(0,0,0,.1);text-align:center;border-left:4px solid #e53e3e;transition:all .3s}
-        .problem-card:hover{transform:translateY(-10px);box-shadow:0 15px 30px rgba(229,62,62,.15)}
-        .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;margin-top:40px}
-        .feature-card{padding:30px;border-left:4px solid #8B4A9E;background:white;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.05);transition:all .3s}
-        .feature-card:hover{border-left-width:8px;transform:translateX(10px);box-shadow:0 10px 20px rgba(139,74,158,.15)}
-        .pricing{background:#f7fafc}
-        .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;margin-top:40px}
-        .pricing-card{background:white;border-radius:12px;padding:40px 30px;box-shadow:0 4px 6px rgba(0,0,0,.1);text-align:center;position:relative;transition:all .3s;border:1px solid rgba(139,74,158,.1)}
-        .pricing-card.popular{border:3px solid #8B4A9E;transform:scale(1.05);animation:pulse 2s infinite}
-        .popular-badge{position:absolute;top:-15px;left:50%;transform:translateX(-50%);background:#9DC444;color:white;padding:5px 20px;border-radius:20px;font-size:.9rem;font-weight:600}
-        .price{font-size:3rem;font-weight:800;color:#8B4A9E;margin-bottom:10px}
-        .launch-special{background:#fef5e7;border:2px solid #f39c12;border-radius:8px;padding:20px;margin:30px 0;text-align:center}
-        #contact{background:linear-gradient(145deg,#3d3020,#2a2015);color:#f5d89e}
-        .contact-form{max-width:600px;margin:40px auto;background:rgba(0,0,0,.7);padding:40px;border-radius:12px;box-shadow:0 4px 6px rgba(0,0,0,.1);border:1px solid rgba(157,196,68,.3)}
-        .form-group{margin-bottom:20px}
-        .form-group label{display:block;margin-bottom:8px;font-weight:600;color:#f5d89e}
-        .form-group input,.form-group select,.form-group textarea{width:100%;padding:12px;border:1px solid rgba(157,196,68,.3);border-radius:6px;background:rgba(255,254,249,.95);font-size:1rem}
-        footer{background:#2d3748;color:white;padding:40px 20px;text-align:center}
-        .whatsapp-float{position:fixed;bottom:40px;right:40px;width:60px;height:60px;background:#25d366;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;box-shadow:2px 2px 20px rgba(0,0,0,.3);z-index:100;animation:float 3s infinite}
-        .whatsapp-float:hover{transform:scale(1.1)}
-        @media(max-width:768px){.hero h1{font-size:2.5rem}.hero p{font-size:1.2rem}.hero-features{flex-direction:column;gap:15px}}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+       
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+       
+        .hero {
+            background: linear-gradient(135deg, #8B4A9E 0%, #6B3A7E 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+       
+        .logo-container {
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+       
+        .logo-container img {
+            max-width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            background: white;
+            padding: 15px;
+            transition: transform 0.3s ease;
+        }
+       
+        .logo-container img:hover {
+            transform: scale(1.05);
+        }
+       
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+       
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+       
+        .hero-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 40px auto;
+            max-width: 900px;
+        }
+       
+        .hero-feature {
+            background: linear-gradient(135deg, rgba(139, 74, 158, 0.95) 0%, rgba(107, 58, 126, 0.95) 100%);
+            color: white;
+            padding: 25px 20px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+        }
+        
+        .hero-feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
+            border-color: rgba(255, 215, 0, 0.6);
+        }
+        
+        .hero-feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            display: block;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+        }
+        
+        .hero-feature-text {
+            color: white;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+       
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+       
+        .btn {
+            padding: 18px 40px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+       
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+       
+        .btn-primary {
+            background: #9DC444;
+            color: white;
+        }
+       
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+       
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+       
+        section {
+            padding: 80px 20px;
+        }
+       
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #2d3748;
+        }
+       
+        .problem {
+            background: #f7fafc;
+        }
+       
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+       
+        .problem-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+       
+        .problem-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+       
+        .problem-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #e53e3e;
+        }
+       
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+            perspective: 1000px;
+        }
+       
+        .feature-card {
+            padding: 35px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .feature-card:nth-child(1) { animation-delay: 0s; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .feature-card:nth-child(2) { animation-delay: 1s; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .feature-card:nth-child(3) { animation-delay: 2s; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .feature-card:nth-child(4) { animation-delay: 3s; background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+        .feature-card:nth-child(5) { animation-delay: 4s; background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        .feature-card:nth-child(6) { animation-delay: 5s; background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotateX(0deg); }
+            50% { transform: translateY(-10px) rotateX(2deg); }
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+            animation: shimmer 8s infinite linear;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.5);
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: white;
+            position: relative;
+            z-index: 1;
+            font-weight: 800;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .feature-card p {
+            color: rgba(255, 255, 255, 0.95);
+            position: relative;
+            z-index: 1;
+            line-height: 1.7;
+            font-size: 1.05rem;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+       
+        .pricing {
+            background: #f7fafc;
+        }
+       
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+       
+        .pricing-card {
+            background: white;
+            border-radius: 12px;
+            padding: 40px 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+            position: relative;
+        }
+       
+        .pricing-card.popular {
+            border: 3px solid #8B4A9E;
+            transform: scale(1.05);
+        }
+       
+        .popular-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #9DC444;
+            color: white;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+       
+        .pricing-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+       
+        .price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #8B4A9E;
+            margin-bottom: 10px;
+        }
+       
+        .price-period {
+            font-size: 1rem;
+            color: #718096;
+            margin-bottom: 30px;
+        }
+       
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+       
+        .pricing-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+       
+        .pricing-features li:before {
+            content: "✓";
+            color: #48bb78;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+       
+        .launch-special {
+            background: #fef5e7;
+            border: 2px solid #f39c12;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 30px 0;
+            text-align: center;
+        }
+       
+        .launch-special h3 {
+            color: #d68910;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+       
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+       
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+       
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: #4a5568;
+        }
+       
+        .testimonial-author {
+            font-weight: 600;
+            color: #2d3748;
+        }
+       
+        .contact-form {
+            max-width: 600px;
+            margin: 40px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+       
+        .form-group {
+            margin-bottom: 20px;
+        }
+       
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2d3748;
+        }
+       
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e0;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+       
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+       
+        footer {
+            background: #2d3748;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+       
+        footer a {
+            color: #90cdf4;
+            text-decoration: none;
+        }
+        
+        .whatsapp-icon {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background: #FFD700;
+            border-radius: 50%;
+            position: relative;
+            vertical-align: middle;
+            margin: 0 5px;
+        }
+        
+        .whatsapp-icon::before {
+            content: "💬";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 12px;
+        }
+        
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            z-index: 1000;
+            text-decoration: none;
+        }
+        
+        .floating-whatsapp:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        }
+        
+        .floating-whatsapp svg {
+            width: 35px;
+            height: 35px;
+            fill: white;
+        }
+        
+        .golden-box {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            border: 3px solid #DAA520;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 40px auto;
+            max-width: 600px;
+            box-shadow: 0 8px 20px rgba(218, 165, 32, 0.3);
+        }
+        
+        .golden-box h3 {
+            color: #8B4513;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: 800;
+        }
+        
+        .golden-box p {
+            color: #5D4E37;
+            font-size: 1.2rem;
+            text-align: center;
+            font-weight: 600;
+            margin: 10px 0;
+        }
+        
+        .golden-box .highlight {
+            font-size: 1.4rem;
+            color: #8B0000;
+            font-weight: 800;
+        }
+        
+        .roi-calculator {
+            max-width: 700px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .roi-calculator::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: shimmer 8s infinite linear;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .roi-calculator-content {
+            position: relative;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .roi-section {
+            margin-bottom: 35px;
+        }
+        
+        .roi-section h3 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 1.6rem;
+            color: #764ba2;
+            font-weight: 800;
+        }
+        
+        .roi-line {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 1.05rem;
+        }
+        
+        .roi-line.total {
+            border-bottom: 3px solid #764ba2;
+            border-top: 2px solid #764ba2;
+            padding: 15px 0;
+            margin-top: 10px;
+            font-weight: 700;
+        }
+        
+        .roi-line.total .amount {
+            font-size: 1.4rem;
+        }
+        
+        .roi-positive {
+            color: #48bb78;
+            font-weight: 700;
+        }
+        
+        .roi-negative {
+            color: #e53e3e;
+            font-weight: 700;
+        }
+        
+        .roi-final {
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 30px;
+            box-shadow: 0 6px 15px rgba(72, 187, 120, 0.4);
+        }
+        
+        .roi-final p {
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin: 0;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+       
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+           
+            .hero p {
+                font-size: 1.1rem;
+            }
+           
+            .hero-features {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+           
+            .section-title {
+                font-size: 2rem;
+            }
+           
+            .pricing-card.popular {
+                transform: scale(1);
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Your full beautiful QuickReserve landing page starts here -->
     <section class="hero">
         <div class="container">
             <div class="logo-container">
-                <img src="quickreserve-logo.png" alt="QuickReserve">
+                <img src="quickreserve-logo.png" alt="QuickReserve - Your Time, Secured">
             </div>
             <h1>Stop Losing Money to No-Shows</h1>
-            <p style="font-weight:700;font-size:1.4rem">WhatsApp booking system built for South African service businesses</p>
+            <p>WhatsApp booking system built for South African salons, trainers & studios</p>
+           
             <div class="hero-features">
-                <div class="hero-feature">Cut no-shows by 60%</div>
-                <div class="hero-feature">Save 10+ hours a week</div>
-                <div class="hero-feature">From R199/mo</div>
+                <div class="hero-feature">
+                    <span class="hero-feature-icon">📉</span>
+                    <span class="hero-feature-text">Cut no-shows by 60%</span>
+                </div>
+                <div class="hero-feature">
+                    <span class="hero-feature-icon">⏱️</span>
+                    <span class="hero-feature-text">Save 2+ hours daily</span>
+                </div>
+                <div class="hero-feature">
+                    <span class="hero-feature-icon">💰</span>
+                    <span class="hero-feature-text">R199/month</span>
+                </div>
             </div>
+           
             <div class="cta-buttons">
                 <a href="#contact" class="btn btn-primary">Start Free Trial</a>
-                <a href="https://wa.me/27733833254?text=Hi!%20I%20want%20to%20learn%20about%20QuickReserve" class="btn btn-secondary">Chat on WhatsApp</a>
+                <a href="https://wa.me/27681084189?text=Hi!%20I%20want%20to%20learn%20about%20QuickReserve" class="btn btn-secondary">WhatsApp Us</a>
             </div>
         </div>
     </section>
-    <!-- All other sections (stats, problems, features, pricing, testimonials, math, contact form, footer) are included in the full version I sent you earlier -->
-    <a href="https://wa.me/27733833254?text=Hi!%20I%20want%20to%20learn%20about%20QuickReserve" class="whatsapp-float" target="_blank">Chat</a>
+   
+    <section class="problem">
+        <div class="container">
+            <h2 class="section-title">Sound Familiar?</h2>
+           
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="problem-icon">😤</div>
+                    <h3>Losing R4,000/Month to No-Shows</h3>
+                    <p>Clients book, you hold the slot, they don't show up. Money gone.</p>
+                </div>
+               
+                <div class="problem-card">
+                    <div class="problem-icon">⏰</div>
+                    <h3>Wasting 10-15 Hours Weekly</h3>
+                    <p>WhatsApp messages, phone calls, updating calendars... You're doing admin, not what you love.</p>
+                </div>
+               
+                <div class="problem-card">
+                    <div class="problem-icon">😰</div>
+                    <h3>Double-Bookings & Chaos</h3>
+                    <p>Messy WhatsApp chats. Forgotten appointments. Angry clients. Stressful days.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+   
+    <section>
+        <div class="container">
+            <h2 class="section-title">How QuickReserve Fixes This</h2>
+           
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>📱 WhatsApp Integration</h3>
+                    <p>Your clients book where they already chat. No new app to download. Instant confirmations sent automatically.</p>
+                </div>
+               
+                <div class="feature-card">
+                    <h3>⏰ Automatic Reminders</h3>
+                    <p>24-hour WhatsApp reminders reduce no-shows by 60%. Clients confirm or you fill the slot. No more lost revenue.</p>
+                </div>
+               
+                <div class="feature-card">
+                    <h3>📅 Smart Calendar</h3>
+                    <p>See all bookings in one place. Syncs with Google Calendar. Never double-book again. Know exactly who's coming when.</p>
+                </div>
+               
+                <div class="feature-card">
+                    <h3>👥 Client Database</h3>
+                    <p>Track client history, preferences, notes. "Sarah prefers afternoons" or "John always late" - remember everything.</p>
+                </div>
+               
+                <div class="feature-card">
+                    <h3>🇿🇦 Built for South Africa</h3>
+                    <p>Rand pricing. Local support. SA time zones. WhatsApp-native (we know your clients use it!).</p>
+                </div>
+               
+                <div class="feature-card">
+                    <h3>⚡ 10-Minute Setup</h3>
+                    <p>We set it up WITH you on a call. If you can use WhatsApp, you can use QuickReserve. That simple.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+   
+    <section>
+        <div class="container">
+            <div class="launch-special">
+                <h3>🔥 LAUNCH SPECIAL - Ends Dec 31, 2025</h3>
+                <p style="font-size: 1.2rem; margin-bottom: 10px;">First 50 customers lock in <strong>R199/month FOREVER</strong></p>
+                <p>After that: R249/month. Save R600/year for life!</p>
+            </div>
+        </div>
+    </section>
+   
+    <section class="pricing">
+        <div class="container">
+            <h2 class="section-title">Simple, Transparent Pricing</h2>
+           
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Starter</h3>
+                    <div class="price">R199</div>
+                    <div class="price-period">/month</div>
+                    <ul class="pricing-features">
+                        <li>1 staff member</li>
+                        <li>Up to 100 bookings/month</li>
+                        <li>WhatsApp reminders</li>
+                        <li>Client database</li>
+                        <li>Calendar sync</li>
+                        <li>Basic reporting</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary">Start Free Trial</a>
+                </div>
+               
+                <div class="pricing-card popular">
+                    <div class="popular-badge">MOST POPULAR</div>
+                    <h3>Growth</h3>
+                    <div class="price">R449</div>
+                    <div class="price-period">/month</div>
+                    <ul class="pricing-features">
+                        <li>Up to 3 staff members</li>
+                        <li>Unlimited bookings</li>
+                        <li>WhatsApp + SMS reminders</li>
+                        <li>Advanced reporting</li>
+                        <li>Priority support</li>
+                        <li>Custom branding</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary">Start Free Trial</a>
+                </div>
+               
+                <div class="pricing-card">
+                    <h3>Pro</h3>
+                    <div class="price">R699</div>
+                    <div class="price-period">/month</div>
+                    <ul class="pricing-features">
+                        <li>Unlimited staff</li>
+                        <li>Unlimited bookings</li>
+                        <li>WhatsApp + SMS + Email</li>
+                        <li>Multi-location support</li>
+                        <li>Dedicated account manager</li>
+                        <li>API access</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary">Start Free Trial</a>
+                </div>
+            </div>
+           
+            <p style="text-align: center; margin-top: 30px; font-size: 1.1rem;">
+                <strong>14-day FREE trial</strong> • No credit card needed • Cancel anytime
+            </p>
+        </div>
+    </section>
+   
+    <section>
+        <div class="container">
+            <h2 class="section-title">What Our Customers Say</h2>
+           
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "QuickReserve transformed my mobile nail business! My clients love the automatic reminders and I've had zero no-shows since switching. Total game changer!"
+                    </div>
+                    <div class="testimonial-author">- Busi S., Busilicious Mobile Nails</div>
+                </div>
+               
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "As a senior trainer, managing PT sessions was chaos. QuickReserve simplified everything. My clients love how easy it is to book and confirm sessions."
+                    </div>
+                    <div class="testimonial-author">- Advocate M., Senior Trainer at Moove Gym Fourways</div>
+                </div>
+               
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "The WhatsApp reminders are brilliant! My massage therapy clients never forget their appointments anymore. I'm making more money and spending less time on admin."
+                    </div>
+                    <div class="testimonial-author">- Ish N., Professional Massage Therapy</div>
+                </div>
+            </div>
+        </div>
+    </section>
+   
+    <section class="problem">
+        <div class="container">
+            <h2 class="section-title">The Math is Simple</h2>
+           
+            <div class="roi-calculator">
+                <div class="roi-calculator-content">
+                    <div class="roi-section">
+                        <h3>💸 Your Current Situation:</h3>
+                        
+                        <div class="roi-line">
+                            <span>No-shows per month (4):</span>
+                            <span class="amount roi-negative">-R2,000</span>
+                        </div>
+                        <div class="roi-line">
+                            <span>Hours spent on admin (50hrs × R200):</span>
+                            <span class="amount roi-negative">-R10,000</span>
+                        </div>
+                        <div class="roi-line total">
+                            <span><strong>Total monthly loss:</strong></span>
+                            <span class="amount roi-negative">-R12,000</span>
+                        </div>
+                    </div>
+                    
+                    <div class="roi-section">
+                        <h3>✨ With QuickReserve:</h3>
+                        
+                        <div class="roi-line">
+                            <span>No-shows reduced by 60%:</span>
+                            <span class="amount roi-positive">+R1,200 saved</span>
+                        </div>
+                        <div class="roi-line">
+                            <span>Time saved (10hrs × R200):</span>
+                            <span class="amount roi-positive">+R2,000 saved</span>
+                        </div>
+                        <div class="roi-line">
+                            <span>QuickReserve cost:</span>
+                            <span class="amount roi-negative">-R199</span>
+                        </div>
+                        <div class="roi-line total">
+                            <span><strong>Net benefit per month:</strong></span>
+                            <span class="amount roi-positive">+R3,001</span>
+                        </div>
+                    </div>
+                    
+                    <div class="roi-final">
+                        <p>🚀 QuickReserve pays for itself 15X over!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+   
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Start Your Free Trial</h2>
+            
+            <div class="golden-box">
+                <h3>🚀 Limited Time Offer!</h3>
+                <p>Sign up now and get your <span class="highlight">FIRST MONTH FREE</span></p>
+                <p>Plus lock in our launch pricing forever!</p>
+            </div>
+           
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Your Name *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+               
+                <div class="form-group">
+                    <label for="business">Business Name *</label>
+                    <input type="text" id="business" name="business" required>
+                </div>
+               
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+               
+                <div class="form-group">
+                    <label for="phone">Phone / WhatsApp Number *</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+               
+                <div class="form-group">
+                    <label for="businessType">Business Type *</label>
+                    <select id="businessType" name="businessType" required>
+                        <option value="">Select your business type...</option>
+                        <optgroup label="Beauty & Personal Care">
+                            <option value="hair-salon">Hair Salon</option>
+                            <option value="nail-salon">Nail Salon</option>
+                            <option value="beauty-salon">Beauty Salon</option>
+                            <option value="barbershop">Barbershop</option>
+                            <option value="spa">Spa & Wellness Center</option>
+                            <option value="tattoo">Tattoo Studio</option>
+                        </optgroup>
+                        <optgroup label="Health & Wellness">
+                            <option value="massage">Massage Therapy</option>
+                            <option value="physiotherapy">Physiotherapy</option>
+                            <option value="chiropractor">Chiropractor</option>
+                            <option value="medical">Medical Practice</option>
+                            <option value="dentist">Dental Practice</option>
+                        </optgroup>
+                        <optgroup label="Fitness & Sports">
+                            <option value="personal-trainer">Personal Trainer</option>
+                            <option value="yoga">Yoga Studio</option>
+                            <option value="gym">Gym/Fitness Center</option>
+                            <option value="pilates">Pilates Studio</option>
+                        </optgroup>
+                        <optgroup label="Accommodation">
+                            <option value="lodge">Lodge</option>
+                            <option value="guesthouse">Guesthouse</option>
+                            <option value="bnb">Bed & Breakfast</option>
+                            <option value="hotel">Hotel</option>
+                        </optgroup>
+                        <optgroup label="Other Services">
+                            <option value="other">Other Service Business</option>
+                        </optgroup>
+                    </select>
+                </div>
+               
+                <div class="form-group">
+                    <label for="message">Tell us about your booking needs (Optional)</label>
+                    <textarea id="message" name="message" placeholder="e.g., Number of staff, current booking challenges, etc."></textarea>
+                </div>
+               
+                <button type="submit" class="btn btn-primary" id="submitBtn">Start Free Trial</button>
+            </form>
+        </div>
+    </section>
+   
+    <footer>
+        <div class="container">
+            <p style="margin-bottom: 10px;"><strong>QuickReserve</strong> - Smart Booking for Smart Businesses</p>
+            <p>📧 hello@quickreserve.co.za | 
+                <svg style="width: 20px; height: 20px; vertical-align: middle; fill: #FFD700; display: inline-block;" viewBox="0 0 24 24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                </svg> +27 68 108 4189</p>
+            <p style="margin-top: 20px; font-size: 0.9rem;">© 2024 QuickReserve. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <a href="https://wa.me/27681084189?text=Hi!%20I%20want%20to%20learn%20about%20QuickReserve" class="floating-whatsapp" target="_blank" aria-label="Chat on WhatsApp">
+        <svg viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
+    </a>
+   
     <script>
-        const observer = new IntersectionObserver(e=>e.forEach(entry=>entry.isIntersecting&&entry.target.classList.add('show')),{threshold:0.1});
-        document.querySelectorAll('.animate').forEach(el=>observer.observe(el));
+        const form = document.getElementById('contactForm');
+        const btn = document.getElementById('submitBtn');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Form submission preview - In production, this would submit to your backend!');
+            console.log('Form data:', {
+                name: document.getElementById('name').value,
+                business: document.getElementById('business').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                businessType: document.getElementById('businessType').value,
+                message: document.getElementById('message').value
+            });
+        });
     </script>
 </body>
 </html>
