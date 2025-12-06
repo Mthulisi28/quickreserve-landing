@@ -96,7 +96,7 @@ footer a{color:#90cdf4;text-decoration:none}
 .floating-whatsapp{position:fixed;bottom:30px;right:30px;width:60px;height:60px;background:linear-gradient(135deg,#FFD700,#FFA500);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(212,175,55,0.5);cursor:pointer;transition:transform .3s,box-shadow .3s;z-index:1000;text-decoration:none;animation:bounce 2s infinite}
 .floating-whatsapp:hover{transform:scale(1.1);box-shadow:0 6px 20px rgba(212,175,55,0.7)}
 .floating-whatsapp svg{width:35px;height:35px;fill:#1a1a1a}
-@media(max-width:768px){.hero h1{font-size:2rem}.hero p{font-size:1.1rem}.hero-features{grid-template-columns:1fr;gap:15px}.section-title{font-size:2rem}.pricing-card.popular{transform:scale(1)}.logo-container img{max-width:150px;height:150px}}
+@media(max-width:768px){.hero h1{font-size:2rem}.hero p{font-size:1.1rem}.hero-features{grid-template-columns:1fr;gap:15px}.pricing-card.popular{transform:scale(1)}.logo-container img{max-width:150px;height:150px}}
 </style>
 </head>
 <body>
@@ -397,55 +397,82 @@ footer a{color:#90cdf4;text-decoration:none}
 
 <script>
 (function(){
-const GCF_URL="https://us-central1-aqueous-helper-480017-n1.cloudfunctions.net/handle_quickreserve_lead";
-const form=document.getElementById('contactForm');
-const btn=document.getElementById('submitBtn');
+// *** CRITICAL: YOUR GCF WEBHOOK URL ***
+// This is the URL you copied from the Cloud Run service details page.
+const GCF_ENDPOINT = 'https://handle-quickreserve-lead-2-528459915196.us-central1.run.app'; 
 
+const form = document.getElementById('contactForm');
+const btn = document.getElementById('submitBtn');
+
+// Helper function to manage button state (loading/disabled)
 function setLoading(on){
-if(on){btn.disabled=true;btn.textContent='Submitting...'}
-else{btn.disabled=false;btn.textContent='Start Free Trial'}
+    if (on) {
+        btn.disabled = true;
+        btn.textContent = 'Submitting...';
+    } else {
+        btn.disabled = false;
+        btn.textContent = 'Start Free Trial';
+    }
 }
 
-form.addEventListener('submit',async function(e){
-e.preventDefault();
-setLoading(true);
+form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    setLoading(true);
 
-const payload={
-name:document.getElementById('name').value||'',
-business:document.getElementById('business').value||'',
-email:document.getElementById('email').value||'',
-phone:document.getElementById('phone').value||'',
-businessType:document.getElementById('businessType').value||'',
-message:document.getElementById('message').value||'',
-timestamp:new Date().toISOString(),
-source:'landing-page'
-};
+    // Collect all form data and prepare the JSON payload
+    const formData = new FormData(form);
+    const payload = {
+        // Collect required fields
+        name: formData.get('name') || '',
+        business_name: formData.get('business') || '', // Key name changed to match Python backend
+        email: formData.get('email') || '',
+        phone: formData.get('phone') || '',
+        businessType: formData.get('businessType') || '',
+        message: formData.get('message') || '',
+        // Add meta data for tracking
+        timestamp: new Date().toISOString(),
+        source: 'quickreserve-landing'
+    };
+    
+    // NOTE: The Python GCF function expects `business_name`, so the key mapping is critical here.
 
-try{
-const resp=await fetch(GCF_URL,{
-method:'POST',
-headers:{'Content-Type':'application/json'},
-body:JSON.stringify(payload)
+    try {
+        const response = await fetch(GCF_ENDPOINT, {
+            method: 'POST',
+            headers: {
+                // Must be application/json to match the GCF backend
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(payload),
+        });
+        
+        // Try to parse JSON response; if not possible, treat as generic success/failure
+        const json = await response.json().catch(() => ({}));
+
+        // Check for HTTP 200-299 status code AND the success status from the Python code
+        if (response.ok && json.status === 'success') {
+            // Success: Display success message and clear form
+            alert('🥳 Success! Your trial request has been captured. We will contact you via WhatsApp shortly to get you set up!');
+            form.reset();
+        } else {
+            // Handle specific GCF errors
+            const errorMessage = json.message || 'Unknown error occurred.';
+            console.error('GCF Submission Failed:', response.status, errorMessage);
+            alert(`Sorry, we couldn't process your request (${errorMessage}). Please contact us via WhatsApp.`);
+        }
+    } catch (error) {
+        // Handle network failure (CORS, network down, etc.)
+        console.error('Network or CORS Error:', error);
+        alert('Network error. Please check your connection and try again.');
+    } finally {
+        setLoading(false);
+    }
 });
 
-const json=await resp.json().catch(()=>({}));
-
-if(resp.ok && json.status==='ok'){
-alert('Thank you! We will contact you soon.');
-form.reset();
-}else{
-console.error('submit error',resp.status,json);
-alert('Sorry — we could not submit your request. Please try again or contact hello@quickreserve.co.za');
-}
-}catch(err){
-console.error('network error',err);
-alert('Network error. Please check your connection and try again.');
-}finally{
-setLoading(false);
-}
+// Ensure button is ready when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+    setLoading(false);
 });
-
-document.addEventListener('DOMContentLoaded',()=>{setLoading(false)});
 })();
 </script>
 </body>
