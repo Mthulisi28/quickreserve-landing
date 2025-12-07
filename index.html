@@ -97,9 +97,63 @@ section{padding:80px 20px}
 .form-group textarea{resize:vertical;min-height:120px}
 footer{background:#2d3748;color:#fff;padding:40px 20px;text-align:center}
 footer a{color:#90cdf4;text-decoration:none}
-.floating-whatsapp{position:fixed;bottom:30px;right:30px;width:60px;height:60px;background:linear-gradient(135deg,#FFD700,#FFA500);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(212,175,55,0.5);cursor:pointer;transition:transform .3s,box-shadow .3s;z-index:1000;text-decoration:none;animation:bounce 2s infinite}
-.floating-whatsapp:hover{transform:scale(1.1);box-shadow:0 6px 20px rgba(212,175,55,0.7)}
-.floating-whatsapp svg{width:35px;height:35px;fill:#1a1a1a}
+
+/* --- CUSTOM GOLD ICON & REPLACEMENT CSS --- */
+
+/* 1. New style for a custom, glossy, gold floating icon */
+.floating-contact{
+    position:fixed;
+    bottom:30px;
+    right:30px;
+    width:60px;
+    height:60px;
+    /* Glossy Gold Gradient */
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    /* Crystal/Glossy effect via box-shadow */
+    box-shadow: 0 0 0 6px rgba(255, 215, 0, 0.4), 0 4px 12px rgba(212, 175, 55, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.8);
+    cursor:pointer;
+    transition:transform .3s,box-shadow .3s;
+    z-index:1000;
+    text-decoration:none;
+    animation:bounce 2s infinite;
+    /* Optional: Small inner border for definition */
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+.floating-contact:hover{
+    transform:scale(1.1);
+    box-shadow: 0 0 0 8px rgba(255, 215, 0, 0.6), 0 6px 20px rgba(212, 175, 55, 0.9), inset 0 0 10px rgba(255, 255, 255, 1);
+}
+
+/* 2. Style the custom icon (using a simple chat/message icon for generality) */
+.floating-contact-icon {
+    /* M letter inside the gold bubble (for Message/Contact/Quickreserve) */
+    font-size: 30px;
+    font-weight: 900;
+    color: #8B4A9E; /* Using the purple brand color for contrast */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    /* For a more generic 'contact' symbol, we'll use a FontAwesome-like chat bubble */
+    /* If we can't use an external font/SVG, a simple letter or glyph is best */
+    /* Since we're in pure HTML/CSS, let's use the 💬 emoji for now, styled for gold contrast */
+    content: '💬';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    font-size: 30px;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.6);
+}
+
+/* Old WhatsApp CSS removed:
+.floating-whatsapp{...}
+.floating-whatsapp:hover{...}
+.floating-whatsapp svg{...}
+*/
+
 @media(max-width:768px){.hero h1{font-size:2rem}.hero p{font-size:1.1rem}.hero-features{grid-template-columns:1fr;gap:15px}.section-title{font-size:2rem}.pricing-card.popular{transform:scale(1)}.logo-container img{max-width:150px;height:150px}}
 </style>
 </head>
@@ -336,7 +390,6 @@ footer a{color:#90cdf4;text-decoration:none}
 <input type="hidden" name="_captcha" value="false">
 <input type="hidden" name="_template" value="table">
 <input type="text" name="_honey" style="display:none">
-<input type="hidden" name="_next" value="https://quickreserve.co.za/thank-you.html">
 
 <div class="form-group">
 <label for="name">Your Name *</label>
@@ -405,14 +458,18 @@ footer a{color:#90cdf4;text-decoration:none}
 </div>
 </section>
 
+<a href="https://wa.me/27733833254?text=Hi!%20I%20want%20to%20learn%20about%20QuickReserve" class="floating-contact">
+    <span class="floating-contact-icon">💬</span>
+</a>
+
 <footer>
 <div class="container">
 <p style="margin-bottom:10px"><strong>QuickReserve</strong> - Smart Booking for Smart Businesses</p>
-<p>📧 support@quickreserve.co.za | <svg style="width:20px;height:20px;vertical-align:middle;fill:#FFD700;display:inline-block" viewBox="0 0 448 512"><path d="M380.9 97.1C339.4 55.7 283.4 32 224 32S108.6 55.7 67.1 97.1 32 183.4 32 224s23.7 116.9 65.1 158.4 92.4 65.1 158.4 65.1 116.9-23.7 158.4-65.1S416 339.4 416 224s-23.7-116.9-65.1-158.4zM224 416c-38.6 0-77-11.1-109.1-33.8s-57.1-55.9-67.6-92.4S32 254.6 32 224s11.1-77 33.8-109.1 55.9-57.1 92.4-67.6 74.6-9.1 109.1-9.1 77 11.1 109.1 33.8 57.1 55.9 67.6 92.4 9.1 74.6 9.1 109.1-11.1 77-33.8 109.1-55.9 57.1-92.4 67.6-74.6 9.1-109.1 9.1zM348.8 206.5l-105.6 105.6c-4.4 4.4-10.2 6.6-16 6.6s-11.6-2.2-16-6.6l-60.8-60.8c-8.8-8.8-8.8-23 0-31.8s23-8.8 31.8 0l44.8 44.8 89.6-89.6c8.8-8.8 23-8.8 31.8 0s8.8 23 0 31.8z"/></svg> <a href="https://wa.me/27733833254" target="_blank">WhatsApp: +27 73 383 3254</a></p>
+<p>📧 support@quickreserve.co.za | <a href="#contact">Contact Us</a></p>
 </div>
 </footer>
-<a href="https://wa.me/27733833254?text=Hi!%20I%20want%20to%20learn%20about%20QuickReserve" class="floating-whatsapp" target="_blank">
-    <svg viewBox="0 0 448 512" style="fill:#1a1a1a"><path d="M380.9 97.1C339.4 55.7 283.4 32 224 32S108.6 55.7 67.1 97.1 32 183.4 32 224s23.7 116.9 65.1 158.4 92.4 65.1 158.4 65.1 116.9-23.7 158.4-65.1S416 339.4 416 224s-23.7-116.9-65.1-158.4zM224 416c-38.6 0-77-11.1-109.1-33.8s-57.1-55.9-67.6-92.4S32 254.6 32 224s11.1-77 33.8-109.1 55.9-57.1 92.4-67.6 74.6-9.1 109.1-9.1 77 11.1 109.1 33.8 57.1 55.9 67.6 92.4 9.1 74.6 9.1 109.1-11.1 77-33.8 109.1-55.9 57.1-92.4 67.6-74.6 9.1-109.1 9.1zM348.8 206.5l-105.6 105.6c-4.4 4.4-10.2 6.6-16 6.6s-11.6-2.2-16-6.6l-60.8-60.8c-8.8-8.8-8.8-23 0-31.8s23-8.8 31.8 0l44.8 44.8 89.6-89.6c8.8-8.8 23-8.8 31.8 0s8.8 23 0 31.8z"/></svg>
-</a>
-</body>
-</html>
+
+@media(max-width:768px){.hero h1{font-size:2rem}.hero p{font-size:1.1rem}.hero-features{grid-template-columns:1fr;gap:15px}.section-title{font-size:2rem}.pricing-card.popular{transform:scale(1)}.logo-container img{max-width:150px;height:150px}}
+</style>
+</head>
+<body>
